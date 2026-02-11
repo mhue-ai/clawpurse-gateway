@@ -97,6 +97,25 @@ curl -H "X-Client-Id: agent-123" http://localhost:4020/api/data
 | `GET /prepaid/balance/:clientId` | Free | Check prepaid balance |
 | `* /*` | **402** | All other routes are payment-gated |
 
+## OpenClaw Integration
+
+For advanced gateway wallet automation within OpenClaw, use the companion skill:
+
+**[ClawPurse Gateway Skill](https://github.com/mhue-ai/clawpurse-gateway-skill)**
+
+Provides:
+- Real-time payment monitoring
+- Auto-staking of excess funds  
+- Automated invoice management
+- Health checks and maintenance
+- Complete CLI for gateway operations
+
+```bash
+# Install the OpenClaw skill
+git clone https://github.com/mhue-ai/clawpurse-gateway-skill.git skills/clawpurse-gateway
+cd skills/clawpurse-gateway && npm install && npm run build
+```
+
 ## Built with
 
 - [ClawPurse](https://github.com/mhue-ai/ClawPurse) — Local NTMPI wallet
