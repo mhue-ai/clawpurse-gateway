@@ -8,7 +8,13 @@
     "build": "tsc",
     "dev": "tsx watch src/index.ts",
     "start": "node dist/index.js",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "test": "node examples/test-client.js",
+    "test:upstream": "node examples/test-upstream.js",
+    "docker:build": "docker build -t clawpurse-gateway .",
+    "docker:run": "docker-compose up",
+    "docker:stop": "docker-compose down",
+    "clean": "rm -rf dist/ gateway.db*"
   },
   "keywords": ["402", "payment", "gateway", "micropayments", "ai-agents", "timpi", "ntmpi", "clawpurse", "neutaro"],
   "author": "mhue-ai",
@@ -19,7 +25,6 @@
   },
   "dependencies": {
     "fastify": "^5.2.0",
-    "@fastify/http-proxy": "^11.0.0",
     "better-sqlite3": "^11.8.0"
   },
   "devDependencies": {
