@@ -8,6 +8,10 @@ class AuthenticationService {
   private users: Map<string, RegisteredUser> = new Map();
 
   registerUser(userData: { email: string; password: string }): RegisteredUser {
+    if (this.users.has(userData.email)) {
+      throw new Error("Email already registered");
+    }
+
     const salt = crypto.randomBytes(16).toString("hex");
     const hash = crypto
       .pbkdf2Sync(userData.password, salt, AuthenticationService.PBKDF2_ITERATIONS, 64, "sha512")

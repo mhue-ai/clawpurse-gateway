@@ -25,6 +25,16 @@ class WalletService extends EventEmitter {
   getWalletsByUser(userId: string): Wallet[] {
     return Array.from(this.wallets.values()).filter((w) => w.userId === userId);
   }
+
+  updateBalance(walletId: string, amount: number): Wallet {
+    const wallet = this.wallets.get(walletId);
+    if (!wallet) {
+      throw new Error("Wallet not found");
+    }
+    wallet.balance += amount;
+    this.emit("balanceUpdated", wallet);
+    return wallet;
+  }
 }
 
 type WalletType = "blockchain" | "fiat" | "multi-currency";
@@ -38,3 +48,4 @@ interface Wallet {
 }
 
 export default WalletService;
+export type { Wallet, WalletType };
