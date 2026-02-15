@@ -1,6 +1,6 @@
 # ClawPurse 402 Payment Gateway
 
-HTTP reverse proxy that gates API access behind **NTMPI micropayments** on the [Neutaro](https://neutaro.tech) blockchain. Designed for **agentic AI** and machine-to-machine workloads.
+HTTP reverse proxy that gates API access behind **NTMPI micropayments** on the [Neutaro](https://neutaro.com/) blockchain. Designed for **agentic AI** and machine-to-machine workloads.
 
 Any Neutaro wallet can pay. [ClawPurse](https://github.com/mhue-ai/ClawPurse) is the reference client wallet we distribute.
 
