@@ -233,6 +233,6 @@ async function paidFetch(url: string): Promise<any> {
 ## Links
 
 - **ClawPurse Wallet**: https://github.com/mhue-ai/ClawPurse
-- **Neutaro Blockchain**: https://neutaro.tech
+- **Neutaro Blockchain**: https://neutaro.com
 - **Explorer**: https://explorer.neutaro.io
 - **Issues**: https://github.com/mhue-ai/clawpurse-gateway/issues
