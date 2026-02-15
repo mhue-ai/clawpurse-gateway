@@ -3,9 +3,28 @@ services:
   clawpurse-gateway:
     build: .
     ports:
-      - "3000:3000"
+      - "4020:4020"
     environment:
       - NODE_ENV=production
-      - PORT=3000
+      - PORT=4020
+      - GATEWAY_UPSTREAM=${GATEWAY_UPSTREAM:-http://host.docker.internal:3000}
+      - GATEWAY_PAYMENT_ADDRESS=${GATEWAY_PAYMENT_ADDRESS}
+      - GATEWAY_DEFAULT_PRICE=${GATEWAY_DEFAULT_PRICE:-0.001}
+      - GATEWAY_REST=${GATEWAY_REST:-https://api2.neutaro.io}
+      - GATEWAY_MIN_CONFIRMATIONS=${GATEWAY_MIN_CONFIRMATIONS:-1}
+      - GATEWAY_INVOICE_TTL=${GATEWAY_INVOICE_TTL:-300}
+      - GATEWAY_PREPAID=${GATEWAY_PREPAID:-false}
+      - GATEWAY_DB=/app/data/gateway.db
       - JWT_SECRET=${JWT_SECRET:-change-me-before-production}
+    volumes:
+      - gateway-data:/app/data
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4020/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  gateway-data:

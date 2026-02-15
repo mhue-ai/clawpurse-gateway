@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ClawPurse Gateway — Ubuntu 24.04 LTS deployment script
+# ClawPurse 402 Payment Gateway — Ubuntu 24.04 LTS deployment script
 # Run as root or with sudo: sudo bash scripts/deploy-ubuntu.sh
 
 APP_DIR="/opt/clawpurse-gateway"
 APP_USER="clawpurse"
 SERVICE_NAME="clawpurse-gateway"
 
-echo "=== ClawPurse Gateway — Ubuntu 24.04 LTS Installer ==="
+echo "=== ClawPurse 402 Payment Gateway — Ubuntu 24.04 LTS Installer ==="
+
+# --- 0. Install build tools for better-sqlite3 ---
+echo "Installing build dependencies..."
+apt-get update -y
+apt-get install -y python3 make g++
 
 # --- 1. Install Node.js 20 LTS ---
 if ! command -v node &>/dev/null; then
@@ -53,7 +58,7 @@ chown -R "$APP_USER":"$APP_USER" "$APP_DIR"
 echo "Creating systemd service..."
 cat > /etc/systemd/system/${SERVICE_NAME}.service <<EOF
 [Unit]
-Description=ClawPurse Gateway
+Description=ClawPurse 402 Payment Gateway
 After=network.target
 
 [Service]
@@ -77,4 +82,4 @@ echo ""
 echo "=== Deployment complete ==="
 echo "Service status: systemctl status $SERVICE_NAME"
 echo "View logs:      journalctl -u $SERVICE_NAME -f"
-echo "App running on: http://localhost:${PORT:-3000}"
+echo "App running on: http://localhost:${PORT:-4020}"
