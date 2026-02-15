@@ -1,79 +1,44 @@
-import { Request, Response, NextFunction } from 'express';
-import winston from 'winston';
+import { Request, Response, NextFunction } from "express";
+import winston from "winston";
 
 class LoggingMiddleware {
   private static logger: winston.Logger;
 
-  static initialize() {
+  static initialize(): void {
     this.logger = winston.createLogger({
-      level: 'info',
-      format: winston.format.combine(
-        winston.format.timestamp(),
-        winston.format.json()
-      ),
+      level: "info",
+      format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
       transports: [
-        // Console logging
-        new winston.transports.Console({
-          format: winston.format.simple()
-        }),
-        // File logging
-        new winston.transports.File({ 
-          filename: 'error.log', 
-          level: 'error' 
-        }),
-        new winston.transports.File({ 
-          filename: 'combined.log' 
-        })
-      ]
+        new winston.transports.Console({ format: winston.format.simple() }),
+        new winston.transports.File({ filename: "error.log", level: "error" }),
+        new winston.transports.File({ filename: "combined.log" }),
+      ],
     });
   }
 
-  static requestLogger(req: Request, res: Response, next: NextFunction) {
+  static requestLogger(req: Request, res: Response, next: NextFunction): void {
     const start = Date.now();
 
-    // Log the request
-    this.logger.info(, {
+    this.logger.info("Incoming request", {
       method: req.method,
       url: req.url,
-      body: req.body,
       query: req.query,
-      headers: req.headers
     });
 
-    // Attach logging to response
-    res.on('finish', () => {
+    res.on("finish", () => {
       const duration = Date.now() - start;
-      
-      this.logger.info(, {
+      this.logger.info("Request completed", {
         method: req.method,
         url: req.url,
         statusCode: res.statusCode,
-        duration
+        duration,
       });
     });
 
     next();
   }
-
-  static errorLogger() {
-    return (err: Error, req: Request, res: Response, next: NextFunction) => {
-      this.logger.error('Unhandled Error', {
-        message: err.message,
-        stack: err.stack,
-        method: req.method,
-        url: req.url
-      });
-
-      // Default error response
-      res.status(500).json({
-        error: 'Internal Server Error',
-        message: err.message
-      });
-    };
-  }
 }
 
-// Initialize logging
 LoggingMiddleware.initialize();
 
 export default LoggingMiddleware;

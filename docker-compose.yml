@@ -1,0 +1,11 @@
+version: "3.8"
+services:
+  clawpurse-gateway:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - JWT_SECRET=${JWT_SECRET:-change-me-before-production}
+    restart: unless-stopped
