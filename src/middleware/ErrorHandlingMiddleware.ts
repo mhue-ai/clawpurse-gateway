@@ -1,57 +1,39 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from "express";
 
 class ErrorHandlingMiddleware {
-  // Central error handling middleware
   static handleError() {
-    return (err: Error, req: Request, res: Response, next: NextFunction) => {
-      // Log the error (in a real app, use a proper logging service)
-      console.error('Unhandled Error:', err);
+    return (err: Error, _req: Request, res: Response, _next: NextFunction): void => {
+      console.error("Unhandled Error:", err);
 
-      // Determine error type and respond accordingly
       if (err instanceof ValidationError) {
-        return res.status(400).json({
-          error: 'Validation Failed',
-          details: err.details
-        });
+        res.status(400).json({ error: "Validation Failed", details: err.details });
+        return;
       }
 
       if (err instanceof AuthorizationError) {
-        return res.status(403).json({
-          error: 'Authorization Failed',
-          message: err.message
-        });
+        res.status(403).json({ error: "Authorization Failed", message: err.message });
+        return;
       }
 
-      // Generic server error for unhandled exceptions
-      res.status(500).json({
-        error: 'Internal Server Error',
-        message: 'An unexpected error occurred'
-      });
+      res.status(500).json({ error: "Internal Server Error", message: "An unexpected error occurred" });
     };
   }
 
-  // Async error wrapper to catch errors in async route handlers
   static asyncHandler(fn: (req: Request, res: Response, next: NextFunction) => Promise<void>) {
-    return (req: Request, res: Response, next: NextFunction) => {
+    return (req: Request, res: Response, next: NextFunction): void => {
       Promise.resolve(fn(req, res, next)).catch(next);
     };
   }
 
-  // Not Found handler
-  static notFoundHandler(req: Request, res: Response, next: NextFunction) {
-    res.status(404).json({
-      error: 'Not Found',
-      message: 
-    });
+  static notFoundHandler(_req: Request, res: Response): void {
+    res.status(404).json({ error: "Not Found", message: "The requested resource does not exist" });
   }
 }
 
-// Custom error classes
 class ValidationError extends Error {
   details: any;
-
   constructor(details: any) {
-    super('Validation Error');
+    super("Validation Error");
     this.details = details;
   }
 }
@@ -59,12 +41,8 @@ class ValidationError extends Error {
 class AuthorizationError extends Error {
   constructor(message: string) {
     super(message);
-    this.name = 'AuthorizationError';
+    this.name = "AuthorizationError";
   }
 }
 
-export {
-  ErrorHandlingMiddleware,
-  ValidationError,
-  AuthorizationError
-};
+export { ErrorHandlingMiddleware, ValidationError, AuthorizationError };
