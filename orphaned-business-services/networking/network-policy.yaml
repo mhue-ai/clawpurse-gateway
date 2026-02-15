@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: clawpurse-network-policy
+  namespace: clawpurse
+spec:
+  podSelector:
+    matchLabels:
+      app: clawpurse-gateway
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: clawpurse-gateway
