@@ -1,7 +1,7 @@
 {
   "name": "clawpurse-gateway",
   "version": "0.1.0",
-  "description": "Blockchain Gateway Infrastructure",
+  "description": "Comprehensive Blockchain Gateway Infrastructure",
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",

@@ -5,12 +5,14 @@ import { EventEmitter } from "events";
 class StrategicPlanningService extends EventEmitter {
   private strategicObjectives: Map<string, StrategicObjective> = new Map();
 
-  createStrategicObjective(objectiveData: {
-    name: string;
-    description: string;
-    type: "financial" | "operational" | "innovation";
-    priority: "low" | "medium" | "high" | "critical";
-  }): StrategicObjective {
+  createStrategicObjective(
+    objectiveData: {
+      name: string;
+      description: string;
+      type: "financial" | "operational" | "innovation";
+      priority: "low" | "medium" | "high" | "critical";
+    }
+  ): StrategicObjective {
     const objective: StrategicObjective = {
       id: crypto.randomUUID(),
       ...objectiveData,

@@ -19,10 +19,6 @@ class WalletService extends EventEmitter {
 
     return wallet;
   }
-
-  getWallet(walletId: string) {
-    return this.wallets.get(walletId);
-  }
 }
 
 type WalletType = "blockchain" | "fiat" | "multi-currency";

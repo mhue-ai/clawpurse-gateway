@@ -14,3 +14,4 @@ Comprehensive blockchain and financial services platform with 26 microservices.
 1. Install dependencies: npm install
 2. Run tests: npm test
 3. Deploy: ./scripts/full-deployment.sh
+

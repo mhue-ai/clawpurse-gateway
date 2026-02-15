@@ -1,5 +1,6 @@
-import crypto from 'crypto';
-import { EventEmitter } from 'events';
+
+import crypto from "crypto";
+import { EventEmitter } from "events";
 
 class TransactionService extends EventEmitter {
   private transactions: Map<string, Transaction> = new Map();
@@ -14,25 +15,12 @@ class TransactionService extends EventEmitter {
       fromWalletId,
       toWalletId,
       amount,
-      status: 'pending',
+      status: "pending",
       timestamp: new Date()
     };
 
     this.transactions.set(transaction.id, transaction);
-    this.emit('transactionCreated', transaction);
-
-    return transaction;
-  }
-
-  processTransaction(transactionId: string) {
-    const transaction = this.transactions.get(transactionId);
-    
-    if (!transaction) {
-      throw new Error('Transaction not found');
-    }
-
-    transaction.status = 'completed';
-    this.emit('transactionProcessed', transaction);
+    this.emit("transactionCreated", transaction);
 
     return transaction;
   }
@@ -43,8 +31,9 @@ interface Transaction {
   fromWalletId: string;
   toWalletId: string;
   amount: number;
-  status: 'pending' | 'completed' | 'failed';
+  status: "pending" | "completed" | "failed";
   timestamp: Date;
 }
 
 export default TransactionService;
+
