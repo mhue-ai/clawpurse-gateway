@@ -1,5 +1,6 @@
-import crypto from 'crypto';
-import { EventEmitter } from 'events';
+
+import crypto from "crypto";
+import { EventEmitter } from "events";
 
 class WalletService extends EventEmitter {
   private wallets: Map<string, Wallet> = new Map();
@@ -14,7 +15,7 @@ class WalletService extends EventEmitter {
     };
 
     this.wallets.set(wallet.id, wallet);
-    this.emit('walletCreated', wallet);
+    this.emit("walletCreated", wallet);
 
     return wallet;
   }
@@ -24,7 +25,7 @@ class WalletService extends EventEmitter {
   }
 }
 
-type WalletType = 'blockchain' | 'fiat' | 'multi-currency';
+type WalletType = "blockchain" | "fiat" | "multi-currency";
 
 interface Wallet {
   id: string;
@@ -35,3 +36,4 @@ interface Wallet {
 }
 
 export default WalletService;
+

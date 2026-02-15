@@ -1,12 +1,13 @@
-import crypto from 'crypto';
-import { EventEmitter } from 'events';
+
+import crypto from "crypto";
+import { EventEmitter } from "events";
 
 class BlockchainService extends EventEmitter {
   private blockchain: any[] = [];
 
   createTransaction(transaction: any) {
     this.blockchain.push(transaction);
-    this.emit('transactionCreated', transaction);
+    this.emit("transactionCreated", transaction);
   }
 
   getBlockchain() {
@@ -15,3 +16,4 @@ class BlockchainService extends EventEmitter {
 }
 
 export default BlockchainService;
+

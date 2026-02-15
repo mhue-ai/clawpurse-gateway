@@ -1,39 +1,25 @@
-import crypto from 'crypto';
-import { EventEmitter } from 'events';
+
+import crypto from "crypto";
+import { EventEmitter } from "events";
 
 class StrategicPlanningService extends EventEmitter {
   private strategicObjectives: Map<string, StrategicObjective> = new Map();
 
-  createStrategicObjective(
-    objectiveData: {
-      name: string;
-      description: string;
-      type: 'financial' | 'operational' | 'innovation';
-      priority: 'low' | 'medium' | 'high' | 'critical';
-    }
-  ): StrategicObjective {
+  createStrategicObjective(objectiveData: {
+    name: string;
+    description: string;
+    type: "financial" | "operational" | "innovation";
+    priority: "low" | "medium" | "high" | "critical";
+  }): StrategicObjective {
     const objective: StrategicObjective = {
       id: crypto.randomUUID(),
       ...objectiveData,
-      status: 'active',
+      status: "active",
       createdAt: new Date()
     };
 
     this.strategicObjectives.set(objective.id, objective);
-    this.emit('strategicObjectiveCreated', objective);
-
-    return objective;
-  }
-
-  evaluateObjectiveProgress(objectiveId: string, progress: number) {
-    const objective = this.strategicObjectives.get(objectiveId);
-    
-    if (!objective) {
-      throw new Error('Objective not found');
-    }
-
-    objective.progress = progress;
-    this.emit('objectiveProgressUpdated', objective);
+    this.emit("strategicObjectiveCreated", objective);
 
     return objective;
   }
@@ -43,11 +29,11 @@ interface StrategicObjective {
   id: string;
   name: string;
   description: string;
-  type: 'financial' | 'operational' | 'innovation';
-  priority: 'low' | 'medium' | 'high' | 'critical';
-  status: 'active' | 'completed' | 'paused';
+  type: "financial" | "operational" | "innovation";
+  priority: "low" | "medium" | "high" | "critical";
+  status: "active" | "completed" | "paused";
   createdAt: Date;
-  progress?: number;
 }
 
 export default StrategicPlanningService;
+

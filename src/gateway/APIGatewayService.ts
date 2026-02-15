@@ -1,5 +1,6 @@
-import express from 'express';
-import httpProxy from 'http-proxy';
+
+import express from "express";
+import httpProxy from "http-proxy";
 
 class APIGatewayService {
   private proxy: httpProxy;
@@ -11,9 +12,9 @@ class APIGatewayService {
   createRoutingMiddleware() {
     return (req: express.Request, res: express.Response, next: express.NextFunction) => {
       const services: Record<string, string> = {
-        '/auth': 'http://auth-service',
-        '/wallet': 'http://wallet-service',
-        '/blockchain': 'http://blockchain-service'
+        "/auth": "http://auth-service",
+        "/wallet": "http://wallet-service",
+        "/blockchain": "http://blockchain-service"
       };
 
       const matchedService = Object.keys(services).find(path => 
@@ -33,3 +34,4 @@ class APIGatewayService {
 }
 
 export default APIGatewayService;
+
