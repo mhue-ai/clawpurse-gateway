@@ -3,343 +3,431 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ClawPurse — NTMPI Micropayment Ecosystem for AI Agents & DePIN</title>
-  <meta name="description" content="ClawPurse is an open-source micropayment ecosystem on the Neutaro blockchain. Local NTMPI wallet with encrypted guardrails, HTTP 402 payment gateway for API monetization, and agent-ready staking — built for agentic AI, DePIN operators, and machine-to-machine commerce." />
-  <meta name="keywords" content="ClawPurse, NTMPI, micropayments, Neutaro, HTTP 402, payment gateway, agentic AI, DePIN, blockchain wallet, machine-to-machine payments, Timpi, staking, API monetization" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://clawpurse.ai/" />
-  <link rel="alternate" hreflang="en" href="https://clawpurse.ai/" />
-  <link rel="alternate" hreflang="ja" href="https://clawpurse.ai/ja/" />
-  <link rel="alternate" hreflang="ko" href="https://clawpurse.ai/ko/" />
-  <link rel="alternate" hreflang="es" href="https://clawpurse.ai/es/" />
-  <link rel="alternate" hreflang="fr" href="https://clawpurse.ai/fr/" />
-  <link rel="alternate" hreflang="hi" href="https://clawpurse.ai/hi/" />
-  <link rel="alternate" hreflang="zh" href="https://clawpurse.ai/zh/" />
-  <link rel="alternate" hreflang="id" href="https://clawpurse.ai/id/" />
-  <link rel="alternate" hreflang="x-default" href="https://clawpurse.ai/" />
-  <meta property="og:title" content="ClawPurse — NTMPI Micropayment Ecosystem for AI Agents & DePIN" />
-  <meta property="og:description" content="Local NTMPI wallet + HTTP 402 payment gateway. Encrypted guardrails, staking automation, and API monetization for agentic AI and machine-to-machine commerce on Neutaro." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://clawpurse.ai/" />
-  <meta property="og:site_name" content="ClawPurse" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="ClawPurse — NTMPI Micropayment Ecosystem for AI Agents & DePIN" />
-  <meta name="twitter:description" content="Local NTMPI wallet + HTTP 402 payment gateway. Encrypted guardrails, staking automation, and API monetization for agentic AI and machine-to-machine commerce on Neutaro." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <title>ClawPurse Gateway — HTTP 402 Payment Required Micropayment Gateway for AI Agents & APIs</title>
+  <meta name="description" content="Open-source HTTP 402 Payment Required reverse proxy that gates any API behind NTMPI blockchain micropayments. Pay-per-request and prepaid balance flows for agentic AI, machine-to-machine commerce, and DePIN automation on Neutaro.">
+  <meta name="keywords" content="HTTP 402, Payment Required, micropayment gateway, API monetization, pay-per-request, NTMPI, Neutaro, blockchain payments, agentic AI, machine-to-machine payments, DePIN, x402 protocol, AI agent commerce, reverse proxy, ClawPurse, Timpi, crypto micropayments, API paywall, on-chain verification">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gateway.clawpurse.ai/">
+  <link rel="alternate" hreflang="en" href="https://gateway.clawpurse.ai/" />
+  <link rel="alternate" hreflang="ja" href="https://gateway.clawpurse.ai/ja/" />
+  <link rel="alternate" hreflang="ko" href="https://gateway.clawpurse.ai/ko/" />
+  <link rel="alternate" hreflang="es" href="https://gateway.clawpurse.ai/es/" />
+  <link rel="alternate" hreflang="fr" href="https://gateway.clawpurse.ai/fr/" />
+  <link rel="alternate" hreflang="hi" href="https://gateway.clawpurse.ai/hi/" />
+  <link rel="alternate" hreflang="zh" href="https://gateway.clawpurse.ai/zh/" />
+  <link rel="alternate" hreflang="id" href="https://gateway.clawpurse.ai/id/" />
+  <link rel="alternate" hreflang="x-default" href="https://gateway.clawpurse.ai/" />
+  <meta property="og:title" content="ClawPurse Gateway — HTTP 402 Micropayment Gateway for AI Agents">
+  <meta property="og:description" content="Open-source reverse proxy gating any API behind on-chain NTMPI micropayments. Pay-per-request and prepaid balance flows for AI agents, scripts, and machine-to-machine workloads on Neutaro.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gateway.clawpurse.ai/">
+  <meta property="og:site_name" content="ClawPurse Gateway">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ClawPurse Gateway — HTTP 402 Micropayment Gateway for AI Agents">
+  <meta name="twitter:description" content="Open-source reverse proxy gating any API behind on-chain NTMPI micropayments. Built for agentic AI and machine-to-machine commerce on Neutaro.">
+  <meta name="author" content="Mhue">
+  <meta name="generator" content="ClawPurse">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #020409;
+      --bg-base: #070b14;
+      --bg-card: #0c1220;
+      --bg-elevated: #111a2e;
+      --accent-402: #ff3b30;
+      --accent-402-dim: rgba(255, 59, 48, 0.15);
+      --accent-mint: #32d6a8;
+      --accent-mint-dim: rgba(50, 214, 168, 0.12);
+      --accent-gold: #fbbf24;
+      --accent-gold-dim: rgba(251, 191, 36, 0.12);
+      --text-1: #eef2ff;
+      --text-2: #8b95b0;
+      --text-3: #515c75;
+      --border-1: rgba(139, 149, 176, 0.12);
+      --border-2: rgba(139, 149, 176, 0.06);
+      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-xl: 32px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-void);
+      color: var(--text-1);
+      min-height: 100vh;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- Ambient background ---- */
+    .ambient {
+      position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 60% at 15% 10%, rgba(255,59,48,0.06), transparent),
+        radial-gradient(ellipse 70% 50% at 85% 5%, rgba(50,214,168,0.05), transparent),
+        radial-gradient(ellipse 60% 80% at 50% 100%, rgba(251,191,36,0.03), transparent),
+        var(--bg-void);
+    }
+    .grain {
+      position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    /* ---- Utility ---- */
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+    .mono { font-family: var(--font-mono); }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 5px 12px; border-radius: 999px; font-size: 0.75rem;
+      font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .tag--402 { background: var(--accent-402-dim); color: var(--accent-402); }
+    .tag--mint { background: var(--accent-mint-dim); color: var(--accent-mint); }
+    .tag--gold { background: var(--accent-gold-dim); color: var(--accent-gold); }
+
+    /* ---- Hero ---- */
+    .hero { padding: 96px 0 72px; text-align: center; }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px 6px 8px; border-radius: 999px;
+      background: var(--bg-card); border: 1px solid var(--border-1);
+      font-size: 0.82rem; color: var(--text-2); margin-bottom: 28px;
+    }
+    .hero__badge .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent-mint);
+      box-shadow: 0 0 8px var(--accent-mint);
+      animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 700; line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+    .hero h1 .hl-402 {
+      background: linear-gradient(135deg, var(--accent-402), #ff6a5e);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero__sub {
+      margin: 20px auto 0; max-width: 620px;
+      font-size: 1.15rem; color: var(--text-2); line-height: 1.7;
+    }
+    .hero__actions {
+      margin-top: 40px; display: flex; flex-wrap: wrap;
+      gap: 14px; justify-content: center;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px; border-radius: var(--radius-xl);
+      font-family: var(--font-body); font-size: 0.92rem; font-weight: 600;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn--primary {
+      background: linear-gradient(135deg, var(--accent-402), #cc2d24);
+      color: #fff; box-shadow: 0 8px 32px rgba(255,59,48,0.3);
+    }
+    .btn--primary:hover { box-shadow: 0 12px 40px rgba(255,59,48,0.4); }
+    .btn--ghost {
+      background: transparent; color: var(--text-1);
+      border: 1px solid var(--border-1);
+    }
+    .btn--ghost:hover { border-color: var(--text-3); }
+    .btn--mint {
+      background: linear-gradient(135deg, var(--accent-mint), #28b893);
+      color: var(--bg-void); box-shadow: 0 8px 32px rgba(50,214,168,0.25);
+    }
+
+    /* ---- Flow diagram ---- */
+    .flow { padding: 48px 0 64px; }
+    .flow__box {
+      background: var(--bg-card); border: 1px solid var(--border-1);
+      border-radius: var(--radius-lg); padding: 32px;
+      overflow-x: auto;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    }
+    .flow__box pre {
+      font-family: var(--font-mono); font-size: 0.82rem;
+      line-height: 1.65; color: var(--text-2); white-space: pre;
+      margin: 0;
+    }
+    .flow__box pre .c-402 { color: var(--accent-402); font-weight: 600; }
+    .flow__box pre .c-mint { color: var(--accent-mint); }
+    .flow__box pre .c-gold { color: var(--accent-gold); }
+    .flow__box pre .c-dim { color: var(--text-3); }
+
+    /* ---- Section headings ---- */
+    .section { padding: 64px 0; }
+    .section__label { margin-bottom: 8px; }
+    .section__title {
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .section__desc {
+      color: var(--text-2); max-width: 640px; font-size: 1.05rem;
+      margin-bottom: 40px;
+    }
+
+    /* ---- Feature grid ---- */
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+    .fcard {
+      background: var(--bg-card); border: 1px solid var(--border-1);
+      border-radius: var(--radius-lg); padding: 28px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .fcard:hover { border-color: rgba(139,149,176,0.2); box-shadow: 0 16px 48px rgba(0,0,0,0.3); }
+    .fcard__icon {
+      width: 40px; height: 40px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 16px;
+    }
+    .fcard__icon--red   { background: var(--accent-402-dim); }
+    .fcard__icon--mint  { background: var(--accent-mint-dim); }
+    .fcard__icon--gold  { background: var(--accent-gold-dim); }
+    .fcard h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+    .fcard p  { color: var(--text-2); font-size: 0.92rem; line-height: 1.6; }
+
+    /* ---- API table ---- */
+    .api-table-wrap {
+      background: var(--bg-card); border: 1px solid var(--border-1);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .api-table-wrap h3 {
+      padding: 20px 24px 0; font-size: 0.95rem; font-weight: 600;
+      color: var(--text-2); letter-spacing: 0.03em;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    thead th {
+      text-align: left; padding: 14px 24px; font-weight: 600;
+      color: var(--text-3); border-bottom: 1px solid var(--border-1);
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    tbody td { padding: 12px 24px; border-bottom: 1px solid var(--border-2); }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody td:first-child { font-family: var(--font-mono); font-size: 0.82rem; }
+    .method {
+      display: inline-block; font-family: var(--font-mono); font-size: 0.72rem;
+      font-weight: 600; padding: 2px 7px; border-radius: 4px;
+      letter-spacing: 0.04em; min-width: 44px; text-align: center;
+    }
+    .method--get  { background: var(--accent-mint-dim); color: var(--accent-mint); }
+    .method--post { background: var(--accent-gold-dim); color: var(--accent-gold); }
+    .method--any  { background: var(--accent-402-dim); color: var(--accent-402); }
+    .path-cell { font-family: var(--font-mono); color: var(--text-1); }
+    .desc-cell { color: var(--text-2); }
+
+    /* ---- Code blocks ---- */
+    .code-card {
+      background: var(--bg-card); border: 1px solid var(--border-1);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .code-card__header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 20px; border-bottom: 1px solid var(--border-1);
+      background: var(--bg-elevated);
+    }
+    .code-card__dot {
+      width: 10px; height: 10px; border-radius: 50%; opacity: 0.6;
+    }
+    .code-card__title {
+      font-family: var(--font-mono); font-size: 0.78rem;
+      color: var(--text-3); margin-left: 4px;
+    }
+    .code-card pre {
+      padding: 20px; margin: 0; overflow-x: auto;
+      font-family: var(--font-mono); font-size: 0.82rem;
+      line-height: 1.7; color: var(--text-2);
+    }
+    .code-card pre .kw  { color: var(--accent-402); }
+    .code-card pre .fn  { color: var(--accent-mint); }
+    .code-card pre .str { color: var(--accent-gold); }
+    .code-card pre .cm  { color: var(--text-3); font-style: italic; }
+    .code-card pre .num { color: #c4b5fd; }
+
+    /* ---- Dual-column layout ---- */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 740px) { .split { grid-template-columns: 1fr; } }
+
+    /* ---- Architecture ---- */
+    .arch-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+    .acard {
+      background: var(--bg-card); border: 1px solid var(--border-1);
+      border-radius: var(--radius-md); padding: 20px; text-align: center;
+    }
+    .acard__name {
+      font-family: var(--font-mono); font-size: 0.82rem; font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .acard__desc { font-size: 0.82rem; color: var(--text-2); }
+
+    /* ---- Config table ---- */
+    .config-table-wrap {
+      background: var(--bg-card); border: 1px solid var(--border-1);
+      border-radius: var(--radius-lg); overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    .config-table-wrap table td:nth-child(1) { color: var(--accent-mint); }
+    .config-table-wrap table td:nth-child(2) {
+      font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-3);
+    }
+
+    /* ---- Ecosystem ---- */
+    .eco-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .eco-card {
+      background: var(--bg-card); border: 1px solid var(--border-1);
+      border-radius: var(--radius-lg); padding: 28px;
+    }
+    .eco-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
+    .eco-card p { color: var(--text-2); font-size: 0.9rem; line-height: 1.6; }
+    .eco-card a { color: var(--accent-mint); text-decoration: none; }
+    .eco-card a:hover { text-decoration: underline; }
+
+    /* ---- Donate ---- */
+    .donate {
+      text-align: center; margin-top: 48px; padding: 36px;
+      background: var(--bg-card); border: 1px solid var(--accent-402-dim);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    }
+    .donate__addr {
+      display: inline-block; margin-top: 12px; padding: 12px 20px;
+      background: rgba(0,0,0,0.35); border: 1px solid var(--border-1);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono); font-size: 0.88rem;
+      word-break: break-all;
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      text-align: center; padding: 56px 24px 72px;
+      color: var(--text-3); font-size: 0.85rem;
+    }
+    footer a { color: var(--text-2); text-decoration: none; }
+    footer a:hover { color: var(--text-1); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-bottom: 16px; }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 600px) {
+      .hero { padding: 64px 0 48px; }
+      .section { padding: 48px 0; }
+      .features { grid-template-columns: 1fr; }
+      .arch-cards { grid-template-columns: 1fr 1fr; }
+      .flow__box { padding: 20px; }
+      .flow__box pre { font-size: 0.7rem; }
+    }
+
+    /* ---- Fade-in ---- */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "ClawPurse",
-    "applicationCategory": "FinanceApplication",
+    "name": "ClawPurse Gateway",
+    "alternateName": "ClawPurse 402 Gateway",
     "operatingSystem": "Linux, macOS, Windows",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "url": "https://clawpurse.ai",
-    "description": "ClawPurse is an open-source micropayment ecosystem on the Neutaro blockchain. Local NTMPI wallet with encrypted guardrails, HTTP 402 payment gateway for API monetization, and agent-ready staking — built for agentic AI, DePIN operators, and machine-to-machine commerce."
+    "applicationCategory": "FinanceApplication",
+    "applicationSubCategory": "Payment Gateway",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "description": "Open-source HTTP reverse proxy gating API access behind NTMPI micropayments on the Neutaro blockchain. Designed for agentic AI and machine-to-machine commerce.",
+    "softwareVersion": "0.2.0",
+    "programmingLanguage": "TypeScript",
+    "codeRepository": "https://github.com/mhue-ai/clawpurse-gateway",
+    "license": "https://opensource.org/licenses/MIT",
+    "author": {
+      "@type": "Person",
+      "name": "Mhue",
+      "url": "https://github.com/mhue-ai"
+    },
+    "keywords": "HTTP 402, Payment Required, micropayment gateway, API monetization, NTMPI, Neutaro, agentic AI, machine-to-machine payments, DePIN, reverse proxy, blockchain payments"
   }
   </script>
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg: #0c0e13;
-      --bg-card: #13161d;
-      --bg-card-hover: #1a1e28;
-      --border: #1e2230;
-      --border-accent: #2a2f40;
-      --text: #e2e4ea;
-      --text-dim: #8b8f9e;
-      --text-muted: #5c6070;
-      --coral: #f47458;
-      --coral-dim: rgba(244,116,88,0.12);
-      --cyan: #4ecdc4;
-      --cyan-dim: rgba(78,205,196,0.10);
-      --purple: #8b7cf6;
-      --font: 'Outfit', 'Noto Sans JP', 'Noto Sans KR', 'Noto Sans SC', 'Noto Sans Devanagari', system-ui, sans-serif;
-      --mono: 'Fira Code', 'JetBrains Mono', monospace;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-    }
-    a { color: var(--coral); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--cyan); }
-    code, pre { font-family: var(--mono); }
-    .skip-link {
-      position: absolute; top: -100%; left: 16px;
-      background: var(--coral); color: #000; padding: 8px 16px; border-radius: 4px;
-      z-index: 1000; font-weight: 600;
-    }
-    .skip-link:focus { top: 16px; }
-
-    /* NAV */
-    .topnav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(12,14,19,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-    }
-    .topnav-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 56px; gap: 16px;
-    }
-    .topnav-logo {
-      font-weight: 700; font-size: 1.05rem; color: var(--text);
-      display: flex; align-items: center; gap: 8px; white-space: nowrap;
-    }
-    .topnav-logo .claw { color: var(--coral); }
-    .topnav-links {
-      display: flex; align-items: center; gap: 20px;
-      list-style: none; font-size: 0.82rem; color: var(--text-dim);
-    }
-    .topnav-links a { color: var(--text-dim); }
-    .topnav-links a:hover { color: var(--text); }
-    #langSwitcher {
-      background: var(--bg-card); color: var(--text-dim);
-      border: 1px solid var(--border); border-radius: 6px;
-      padding: 4px 8px; font-size: 0.8rem; font-family: var(--font);
-      cursor: pointer;
-    }
-    #langSwitcher:hover { border-color: var(--coral); color: var(--text); }
-
-    @media (max-width: 860px) {
-      .topnav-links { display: none; }
-    }
-
-    /* LAYOUT */
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
-    section { padding: 80px 0; }
-    .section-label {
-      display: inline-block; font-size: 0.72rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.12em;
-      color: var(--coral); background: var(--coral-dim);
-      padding: 4px 12px; border-radius: 100px; margin-bottom: 16px;
-    }
-    .section-title {
-      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-      font-weight: 700; line-height: 1.2; margin-bottom: 12px;
-    }
-    .section-sub {
-      font-size: 1rem; color: var(--text-dim);
-      max-width: 720px; line-height: 1.7;
-    }
-
-    /* HERO */
-    .hero {
-      text-align: center; padding: 100px 24px 80px;
-      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(244,116,88,0.06) 0%, transparent 70%);
-    }
-    .hero-badge {
-      display: inline-block; font-size: 0.78rem; color: var(--text-dim);
-      border: 1px solid var(--border); padding: 6px 16px; border-radius: 100px;
-      margin-bottom: 24px;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem); font-weight: 700;
-      line-height: 1.15; margin-bottom: 20px;
-      background: linear-gradient(135deg, var(--text) 40%, var(--coral) 100%);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-sub {
-      font-size: 1.05rem; color: var(--text-dim);
-      max-width: 700px; margin: 0 auto 32px; line-height: 1.7;
-    }
-    .hero-ctas {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
-      margin-bottom: 28px;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 10px 20px; border-radius: 8px; font-size: 0.88rem;
-      font-weight: 600; transition: all 0.2s;
-    }
-    .btn-primary {
-      background: var(--coral); color: #0c0e13;
-    }
-    .btn-primary:hover { background: #f5896f; color: #0c0e13; }
-    .btn-outline {
-      border: 1px solid var(--border-accent); color: var(--text-dim);
-    }
-    .btn-outline:hover { border-color: var(--coral); color: var(--text); }
-    .hero-skill {
-      font-size: 0.82rem; color: var(--text-muted);
-    }
-    .hero-skill a { color: var(--cyan); }
-
-    /* PRODUCT CARDS */
-    .product-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-      margin-top: 48px;
-    }
-    @media (max-width: 680px) { .product-grid { grid-template-columns: 1fr; } }
-    .product-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 32px;
-      transition: border-color 0.25s, background 0.25s;
-    }
-    .product-card:hover { border-color: var(--coral); background: var(--bg-card-hover); }
-    .product-card .label {
-      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--cyan); margin-bottom: 8px;
-    }
-    .product-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 10px; }
-    .product-card p { color: var(--text-dim); font-size: 0.92rem; line-height: 1.65; margin-bottom: 16px; }
-    .product-card a { font-size: 0.88rem; font-weight: 600; }
-
-    /* HOW IT WORKS */
-    .diagram-box {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 28px; margin-top: 32px;
-      overflow-x: auto;
-    }
-    .diagram-box pre {
-      font-size: 0.78rem; line-height: 1.75; color: var(--text-dim);
-      white-space: pre; tab-size: 2;
-    }
-    .diagram-box .hl-agent { color: var(--cyan); }
-    .diagram-box .hl-gw { color: var(--coral); }
-    .diagram-box .hl-code { color: var(--purple); }
-
-    /* FEATURE GRIDS */
-    .feat-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px; margin-top: 32px;
-    }
-    .feat-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 10px; padding: 24px;
-      transition: border-color 0.2s;
-    }
-    .feat-card:hover { border-color: var(--border-accent); }
-    .feat-card h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-    .feat-card p { font-size: 0.88rem; color: var(--text-dim); line-height: 1.6; }
-
-    /* AGENT SECTION */
-    .agent-highlight {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 32px; margin: 28px 0;
-      display: flex; align-items: flex-start; gap: 20px;
-    }
-    .agent-highlight .icon { font-size: 2rem; flex-shrink: 0; }
-    .agent-highlight h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
-    .agent-highlight p { font-size: 0.92rem; color: var(--text-dim); margin-bottom: 12px; }
-    @media (max-width: 600px) { .agent-highlight { flex-direction: column; } }
-
-    /* CODE BLOCK */
-    .code-block {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 28px; margin-top: 24px;
-      overflow-x: auto;
-    }
-    .code-block pre {
-      font-size: 0.82rem; line-height: 1.75; color: var(--text-dim);
-    }
-    .code-block .comment { color: var(--text-muted); }
-    .code-block .cmd { color: var(--cyan); }
-
-    /* ECOSYSTEM */
-    .eco-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px;
-    }
-    @media (max-width: 700px) { .eco-grid { grid-template-columns: 1fr; } }
-    .eco-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: 12px; padding: 28px;
-    }
-    .eco-card .label {
-      font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--cyan); margin-bottom: 8px;
-    }
-    .eco-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
-    .eco-card p, .eco-card li { font-size: 0.9rem; color: var(--text-dim); line-height: 1.65; }
-    .eco-card ul { padding-left: 0; list-style: none; }
-    .eco-card li { margin-bottom: 6px; }
-    .eco-card li::before { content: "• "; color: var(--coral); }
-    .eco-steps { counter-reset: step; padding-left: 0; list-style: none; }
-    .eco-steps li {
-      counter-increment: step; margin-bottom: 6px;
-      font-size: 0.9rem; color: var(--text-dim);
-    }
-    .eco-steps li::before {
-      content: counter(step) ". ";
-      color: var(--coral); font-weight: 600;
-    }
-
-    /* RELEASES */
-    .release-list { margin-top: 28px; }
-    .release-item {
-      border-left: 2px solid var(--border);
-      padding: 0 0 32px 24px; margin-left: 8px; position: relative;
-    }
-    .release-item::before {
-      content: ''; position: absolute; left: -5px; top: 4px;
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--coral); border: 2px solid var(--bg);
-    }
-    .release-item:last-child { padding-bottom: 0; }
-    .release-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
-    .release-item p { font-size: 0.88rem; color: var(--text-dim); }
-
-    /* DONATE */
-    .donate-box {
-      text-align: center; padding: 48px 24px;
-      border-top: 1px solid var(--border);
-    }
-    .donate-box h3 { font-size: 1.25rem; margin-bottom: 10px; }
-    .donate-box p { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 12px; }
-    .donate-addr {
-      display: inline-block; font-family: var(--mono); font-size: 0.78rem;
-      background: var(--bg-card); border: 1px solid var(--border);
-      padding: 10px 18px; border-radius: 8px; color: var(--cyan);
-      word-break: break-all;
-    }
-    .donate-memo { font-size: 0.82rem; color: var(--text-muted); margin-top: 10px; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 48px 24px;
-    }
-    .footer-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: flex; justify-content: space-between; gap: 40px;
-      flex-wrap: wrap;
-    }
-    .footer-nav { display: flex; flex-wrap: wrap; gap: 12px 24px; }
-    .footer-nav a { font-size: 0.82rem; color: var(--text-dim); }
-    .footer-nav a:hover { color: var(--text); }
-    .footer-meta { font-size: 0.78rem; color: var(--text-muted); text-align: right; }
-    .footer-meta span { display: block; }
-    @media (max-width: 600px) {
-      .footer-inner { flex-direction: column; }
-      .footer-meta { text-align: left; }
-    }
-  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is ClawPurse Gateway?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ClawPurse Gateway is an open-source HTTP reverse proxy that implements the 402 Payment Required status code to gate any API behind NTMPI micropayments on the Neutaro blockchain. It supports pay-per-request and prepaid balance flows for AI agents, automation scripts, and machine-to-machine commerce."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the HTTP 402 payment flow work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A client requests a gated endpoint and receives a 402 response with an invoice containing an invoiceId, amount, address, and memo. The client pays on-chain using ClawPurse or any Neutaro wallet, then retries the request with an X-Payment-Proof header. The gateway verifies the transaction on the Neutaro blockchain and proxies the request to the upstream API."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is NTMPI and how do I get it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "NTMPI is the native token of the Neutaro blockchain, part of the Timpi decentralised search network. You can acquire NTMPI on the MEXC exchange via the NTMPI/USDT spot pair, or bridge through Gravity Bridge to Osmosis and swap for NTMPI using Keplr or Leap wallet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can AI agents use ClawPurse Gateway autonomously?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. ClawPurse Gateway is designed for agentic AI and machine-to-machine workloads. AI agents can programmatically handle the 402 flow by parsing the invoice, paying on-chain via the ClawPurse wallet API, and retrying with the payment proof header — all without human intervention."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Skip to main content</a>
+  <div class="ambient"></div>
+  <div class="grain"></div>
 
-  <nav class="topnav" aria-label="Main navigation">
-    <div class="topnav-inner">
-      <div class="topnav-logo"><span class="claw">Claw</span>Purse</div>
-      <ul class="topnav-links">
-        <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#wallet-features">Wallet</a></li>
-        <li><a href="#gateway-features">Gateway</a></li>
-        <li><a href="#agents">Agents</a></li>
-        <li><a href="#quick-start">Quick Start</a></li>
-        <li><a href="#timpi">Ecosystem</a></li>
-        <li><a href="#releases">Releases</a></li>
-        <li><select id="langSwitcher" aria-label="Language" onchange="window.location.href=this.value">
+  <!-- ============ HERO ============ -->
+  <header class="hero container">
+    <a href="#main-content" class="sr-only" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;">Skip to main content</a>
+    <div class="hero__badge" role="status" aria-label="Version status">
+      <span class="dot" aria-hidden="true"></span>
+      v0.2.0 — open source on GitHub
+    </div>
+    <h1>ClawPurse<br><span class="hl-402">402 Gateway</span></h1>
+    <p class="hero__sub">
+      An HTTP reverse proxy that gates any API behind <strong>NTMPI micropayments</strong> on the Neutaro blockchain. Pay-per-request and prepaid balance flows for AI&nbsp;agents, automation scripts, and machine&#8209;to&#8209;machine commerce.
+    </p>
+    <nav class="hero__actions" aria-label="Primary actions">
+      <a class="btn btn--primary" href="https://github.com/mhue-ai/clawpurse-gateway" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        View on GitHub
+      </a>
+      <a class="btn btn--ghost" href="https://github.com/mhue-ai/clawpurse-gateway/blob/master/README.md" target="_blank" rel="noopener">Read the Docs</a>
+      <a class="btn btn--mint" href="https://github.com/mhue-ai/ClawPurse" target="_blank" rel="noopener">ClawPurse Wallet</a>
+      <a class="btn btn--ghost" href="https://drip.clawpurse.ai" target="_blank" rel="noopener">Timpi Drip Faucet</a>
+    </nav>
+    <div style="position:fixed;top:16px;right:16px;z-index:100;"><select id="langSwitcher" aria-label="Language" onchange="window.location.href=this.value">
             <option value="/" selected>English</option>
             <option value="/ja/">日本語</option>
             <option value="/ko/">한국어</option>
@@ -348,310 +436,458 @@
             <option value="/hi/">हिन्दी</option>
             <option value="/zh/">中文</option>
             <option value="/id/">Bahasa Indonesia</option>
-          </select></li>
-      </ul>
+          </select></div>
+  </header>
+
+  <!-- ============ FLOW DIAGRAM ============ -->
+  <div class="flow container reveal" role="figure" aria-label="HTTP 402 payment flow diagram showing how a client, gateway, and blockchain interact">
+    <div class="flow__box">
+<pre><span class="c-dim">  Client (AI agent, script, browser)</span>
+    │
+    ├── <span class="c-mint">GET /api/data</span> ─────────────────────▶  <span class="c-402">402 Gateway</span>
+    │                                              │
+    │   ◀── <span class="c-402">402 Payment Required</span> ────────────────┘
+    │       <span class="c-gold">{ invoiceId, amount, address, memo }</span>
+    │
+    ├── <span class="c-mint">clawpurse send</span> &lt;address&gt; &lt;amount&gt; --memo &lt;memo&gt; --yes
+    │       <span class="c-dim">(on-chain NTMPI payment)</span>
+    │
+    ├── <span class="c-mint">GET /api/data</span> ─────────────────────▶  <span class="c-402">402 Gateway</span>
+    │   Header: <span class="c-gold">X-Payment-Proof: &lt;invoiceId&gt;</span>     │
+    │                                              │
+    │   <span class="c-dim">Gateway verifies payment on Neutaro</span>    │
+    │                                              │
+    │   ◀── <span class="c-mint">200 OK</span> <span class="c-dim">(proxied from upstream)</span> ────┘</pre>
     </div>
-  </nav>
+  </div>
 
-  <main id="main">
+  <main class="container" id="main-content">
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-badge">Open-source micropayment infrastructure on Neutaro</div>
-        <h1>ClawPurse Micropayment Ecosystem</h1>
-        <p class="hero-sub">A local NTMPI wallet and HTTP 402 payment gateway for DePIN operators, validator treasuries, and agentic AI. Send, stake, gate APIs, and verify transactions on-chain — with encrypted guardrails and zero third-party custody.</p>
-        <div class="hero-ctas">
-          <a href="https://github.com/mhue-ai/ClawPurse" class="btn btn-primary">Wallet on GitHub</a>
-          <a href="https://gateway.clawpurse.ai" class="btn btn-outline">402 Gateway</a>
-          <a href="https://drip.clawpurse.ai" class="btn btn-outline">Timpi Drip Faucet</a>
-          <a href="https://github.com/mhue-ai/ClawPurse/blob/main/SKILL.md" class="btn btn-outline">AI Agent Guide</a>
+    <!-- ============ PAYMENT FLOWS ============ -->
+    <section class="section reveal" id="payment-flows">
+      <span class="tag tag--402">Payment Flows</span>
+      <h2 class="section__title">Two micropayment flows: pay-per-request and prepaid balance</h2>
+      <p class="section__desc">
+        Whether your agent pays per call or pre-funds a balance, the gateway handles invoice creation, on-chain verification, and upstream proxying automatically.
+      </p>
+      <div class="split">
+        <div class="fcard">
+          <div class="fcard__icon fcard__icon--red">1</div>
+          <h3>Pay-per-request</h3>
+          <p>
+            Client hits a gated endpoint and receives a <strong>402</strong> with an invoice. It pays on-chain, then retries with an <code style="font-size:0.82rem; background:var(--bg-elevated); padding:2px 6px; border-radius:4px;">X-Payment-Proof</code> header. The gateway verifies the transaction on Neutaro and proxies the request upstream.
+          </p>
         </div>
-        <p class="hero-skill">📄 SKILL.md — Complete agent integration docs: <a href="https://github.com/mhue-ai/ClawPurse/blob/main/SKILL.md">github.com/mhue-ai/ClawPurse/blob/main/SKILL.md</a></p>
-      </div>
-    </section>
-
-    <!-- PRODUCT CARDS -->
-    <section>
-      <div class="container">
-        <div class="product-grid">
-          <div class="product-card">
-            <div class="label">Wallet</div>
-            <h3>ClawPurse Wallet</h3>
-            <p>Local-only NTMPI wallet with AES-256 encrypted keystores, destination allowlists, staking automation, and a guardrail wizard. CLI and programmatic API for agents, scripts, and human operators.</p>
-            <a href="https://github.com/mhue-ai/ClawPurse">View Wallet Repo →</a>
-          </div>
-          <div class="product-card">
-            <div class="label">Gateway</div>
-            <h3>ClawPurse 402 Gateway</h3>
-            <p>HTTP reverse proxy implementing 402 Payment Required. Gate any API behind NTMPI micropayments with pay-per-request invoicing, prepaid balances, on-chain verification, and route-level pricing.</p>
-            <a href="https://gateway.clawpurse.ai">View Gateway Site →</a>
-          </div>
+        <div class="fcard">
+          <div class="fcard__icon fcard__icon--mint">2</div>
+          <h3>Prepaid balance</h3>
+          <p>
+            Client deposits NTMPI once via <code style="font-size:0.82rem; background:var(--bg-elevated); padding:2px 6px; border-radius:4px;">/prepaid/deposit</code>. Subsequent requests include an <code style="font-size:0.82rem; background:var(--bg-elevated); padding:2px 6px; border-radius:4px;">X-Client-Id</code> header and the gateway deducts from the balance per call &mdash; no repeated on-chain transactions.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section id="how-it-works">
-      <div class="container">
-        <span class="section-label">How It Works</span>
-        <h2 class="section-title">Wallet + Gateway = micropayment stack</h2>
-        <p class="section-sub">An AI agent hits a gated API, receives a 402 invoice, pays on-chain with ClawPurse, and retries with proof. The gateway verifies the transaction on Neutaro and proxies the request upstream. No accounts, no API keys — just on-chain settlement.</p>
-        <div class="diagram-box">
-<pre>  <span class="hl-agent">AI Agent / Script / Browser</span>
-    │
-    ├── <span class="hl-code">GET /api/data</span> ───────────────────▶  <span class="hl-gw">402 Gateway</span>
-    │                                            │
-    │   ◀── <span class="hl-gw">402 Payment Required</span> ──────────────┘
-    │       { invoiceId, amount, address, memo }
-    │
-    ├── <span class="hl-code">clawpurse send <addr> <amt> --memo <memo></span>
-    │       (on-chain NTMPI payment via wallet)
-    │
-    ├── <span class="hl-code">GET /api/data</span> ───────────────────▶  <span class="hl-gw">402 Gateway</span>
-    │   Header: X-Payment-Proof: <invoiceId>   │
-    │                                            │
-    │   Gateway verifies tx on Neutaro chain  │
-    │                                            │
-    │   ◀── <span class="hl-agent">200 OK (proxied from upstream)</span> ──┘</pre>
+    <!-- ============ FEATURES ============ -->
+    <section class="section reveal" id="features">
+      <span class="tag tag--mint">Capabilities</span>
+      <h2 class="section__title">Built for AI agents and machine-to-machine commerce</h2>
+      <p class="section__desc">
+        Everything a machine-to-machine micropayment layer needs, nothing it doesn't.
+      </p>
+      <div class="features">
+        <div class="fcard">
+          <div class="fcard__icon fcard__icon--red">&#x26A1;</div>
+          <h3>On-chain verification</h3>
+          <p>Queries Neutaro REST API to confirm payment amount, memo, and block confirmations before allowing access.</p>
+        </div>
+        <div class="fcard">
+          <div class="fcard__icon fcard__icon--mint">&#x1F9FE;</div>
+          <h3>Route-level pricing</h3>
+          <p>Set a default price and override per-route with <code style="font-size:0.8rem; background:var(--bg-elevated); padding:1px 5px; border-radius:4px;">GATEWAY_ROUTES</code>. Cheap reads, expensive writes.</p>
+        </div>
+        <div class="fcard">
+          <div class="fcard__icon fcard__icon--gold">&#x1F512;</div>
+          <h3>Management API</h3>
+          <p>JWT-protected endpoints for internal wallets, transactions, and a lightweight blockchain ledger.</p>
+        </div>
+        <div class="fcard">
+          <div class="fcard__icon fcard__icon--red">&#x1F504;</div>
+          <h3>Reverse proxy</h3>
+          <p>Transparently forwards authenticated requests to your upstream API. Any backend, any language.</p>
+        </div>
+        <div class="fcard">
+          <div class="fcard__icon fcard__icon--mint">&#x1F4E6;</div>
+          <h3>SQLite storage</h3>
+          <p>Invoices, prepaid balances, and payment logs stored locally in a single file. Zero external dependencies.</p>
+        </div>
+        <div class="fcard">
+          <div class="fcard__icon fcard__icon--gold">&#x1F433;</div>
+          <h3>Docker-ready</h3>
+          <p>One-command deploy with <code style="font-size:0.8rem; background:var(--bg-elevated); padding:1px 5px; border-radius:4px;">docker compose up</code>. Ubuntu deploy script included for bare metal.</p>
         </div>
       </div>
     </section>
 
-    <!-- WALLET FEATURES -->
-    <section id="wallet-features">
-      <div class="container">
-        <span class="section-label">Wallet</span>
-        <h2 class="section-title">ClawPurse Wallet features</h2>
-        <p class="section-sub">Everything you need to manage NTMPI locally — with guardrails built for autonomous agents.</p>
-        <div class="feat-grid">
-          <div class="feat-card">
-            <h4>Encrypted Keystore</h4>
-            <p>AES-256-GCM with scrypt key derivation. Mnemonics stay locked to the local node.</p>
-          </div>
-          <div class="feat-card">
-            <h4>Guardrail Wizard</h4>
-            <p>Interactive setup for send limits, confirmation thresholds, and allowlist enforcement mode.</p>
-          </div>
-          <div class="feat-card">
-            <h4>Destination Allowlists</h4>
-            <p>Enforce or document trusted addresses with per-destination caps, required memos, and notes.</p>
-          </div>
-          <div class="feat-card">
-            <h4>Transaction Receipts</h4>
-            <p>Every send recorded locally with tx hash, block height, memo, and guardrail status for full audit trails.</p>
-          </div>
-          <div class="feat-card">
-            <h4>Staking & Delegations</h4>
-            <p>Delegate, undelegate, redelegate NTMPI. Discover validators, track rewards, and manage the 22-day unbonding period.</p>
-          </div>
-          <div class="feat-card">
-            <h4>Programmatic API</h4>
-            <p>Import wallet functions directly into agents and scripts. send(), getBalance(), delegate() and more.</p>
-          </div>
+    <!-- ============ API ENDPOINTS ============ -->
+    <section class="section reveal" id="api">
+      <span class="tag tag--gold">API</span>
+      <h2 class="section__title">Gateway API endpoint reference</h2>
+      <p class="section__desc">
+        Free endpoints for health checks, invoice lookups, and balance queries. Everything else goes through the 402 gate.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="api-table-wrap">
+          <h3>Free — no payment required</h3>
+          <table>
+            <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="method method--get">GET</span></td>
+                <td class="path-cell">/health</td>
+                <td class="desc-cell">Health check with gateway config</td>
+              </tr>
+              <tr>
+                <td><span class="method method--get">GET</span></td>
+                <td class="path-cell">/invoices/:id</td>
+                <td class="desc-cell">Check invoice status (triggers on-chain verification)</td>
+              </tr>
+              <tr>
+                <td><span class="method method--post">POST</span></td>
+                <td class="path-cell">/prepaid/deposit</td>
+                <td class="desc-cell">Register a deposit (verifies tx on-chain first)</td>
+              </tr>
+              <tr>
+                <td><span class="method method--get">GET</span></td>
+                <td class="path-cell">/prepaid/balance/:clientId</td>
+                <td class="desc-cell">Check prepaid balance</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="api-table-wrap">
+          <h3>Management — JWT protected</h3>
+          <table>
+            <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td><span class="method method--post">POST</span></td><td class="path-cell">/manage/auth/register</td><td class="desc-cell">Register admin account</td></tr>
+              <tr><td><span class="method method--post">POST</span></td><td class="path-cell">/manage/auth/login</td><td class="desc-cell">Login, get JWT token</td></tr>
+              <tr><td><span class="method method--post">POST</span></td><td class="path-cell">/manage/wallet</td><td class="desc-cell">Create internal wallet</td></tr>
+              <tr><td><span class="method method--get">GET</span></td><td class="path-cell">/manage/wallet</td><td class="desc-cell">List your wallets</td></tr>
+              <tr><td><span class="method method--get">GET</span></td><td class="path-cell">/manage/wallet/:id</td><td class="desc-cell">Get wallet by ID</td></tr>
+              <tr><td><span class="method method--post">POST</span></td><td class="path-cell">/manage/transactions</td><td class="desc-cell">Create internal transaction</td></tr>
+              <tr><td><span class="method method--get">GET</span></td><td class="path-cell">/manage/transactions/:id</td><td class="desc-cell">Get transaction by ID</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="api-table-wrap">
+          <h3>402 Gate — catch-all</h3>
+          <table>
+            <thead><tr><th>Method</th><th>Path</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><span class="method method--any">ANY</span></td>
+                <td class="path-cell">/*</td>
+                <td class="desc-cell">All other requests require payment or prepaid balance</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
 
-    <!-- GATEWAY FEATURES -->
-    <section id="gateway-features">
-      <div class="container">
-        <span class="section-label">402 Gateway</span>
-        <h2 class="section-title">Monetize any API with NTMPI micropayments</h2>
-        <p class="section-sub">The ClawPurse 402 Gateway sits in front of your upstream API and handles invoicing, on-chain verification, and proxying. Two payment flows, route-level pricing, and a JWT-protected management API.</p>
-        <div class="feat-grid">
-          <div class="feat-card">
-            <h4>Pay-per-request</h4>
-            <p>Client receives a 402 invoice, pays on-chain, retries with X-Payment-Proof header. Gateway verifies and proxies.</p>
+    <!-- ============ AGENT INTEGRATION ============ -->
+    <section class="section reveal" id="integration">
+      <span class="tag tag--402">Integration</span>
+      <h2 class="section__title">Agent integration: Python and TypeScript examples</h2>
+      <p class="section__desc">
+        Wire the 402 flow into any agent in a few lines. The gateway handles invoicing and verification — your code just needs to pay and retry.
+      </p>
+      <div class="split">
+        <div class="code-card">
+          <div class="code-card__header">
+            <span class="code-card__dot" style="background:#ff5f57;"></span>
+            <span class="code-card__dot" style="background:#febc2e;"></span>
+            <span class="code-card__dot" style="background:#28c840;"></span>
+            <span class="code-card__title">agent.py</span>
           </div>
-          <div class="feat-card">
-            <h4>Prepaid balance</h4>
-            <p>Client deposits NTMPI once. Subsequent requests use X-Client-Id and the gateway deducts per call — no repeated on-chain transactions.</p>
-          </div>
-          <div class="feat-card">
-            <h4>On-chain verification</h4>
-            <p>Queries Neutaro REST API to confirm payment amount, memo, and block confirmations.</p>
-          </div>
-          <div class="feat-card">
-            <h4>Route-level pricing</h4>
-            <p>Default price per request plus per-route overrides. Cheap reads, expensive writes.</p>
-          </div>
-          <div class="feat-card" style="grid-column: 1 / -1;">
-            <h4>Docker & bare-metal deploy</h4>
-            <p>One-command docker compose up or Ubuntu deploy script. SQLite storage, zero external dependencies.</p>
-          </div>
+<pre><span class="kw">import</span> requests, subprocess, os
+
+res = requests.<span class="fn">get</span>(<span class="str">"http://gateway:4020/api/data"</span>)
+
+<span class="kw">if</span> res.status_code == <span class="num">402</span>:
+    inv = res.<span class="fn">json</span>()[<span class="str">"payment"</span>]
+
+    <span class="cm"># Pay with ClawPurse</span>
+    subprocess.<span class="fn">run</span>([
+        <span class="str">"clawpurse"</span>, <span class="str">"send"</span>,
+        inv[<span class="str">"address"</span>], inv[<span class="str">"amount"</span>],
+        <span class="str">"--memo"</span>, inv[<span class="str">"memo"</span>], <span class="str">"--yes"</span>
+    ])
+
+    <span class="cm"># Retry with proof</span>
+    res = requests.<span class="fn">get</span>(
+        <span class="str">"http://gateway:4020/api/data"</span>,
+        headers={<span class="str">"X-Payment-Proof"</span>: inv[<span class="str">"invoiceId"</span>]}
+    )
+
+data = res.<span class="fn">json</span>()</pre>
         </div>
-        <p style="margin-top:20px; font-size:0.9rem; color:var(--text-dim);">Full API reference, configuration guide, and agent integration examples at <a href="https://gateway.clawpurse.ai">gateway.clawpurse.ai</a></p>
-      </div>
-    </section>
-
-    <!-- AGENTS -->
-    <section id="agents">
-      <div class="container">
-        <span class="section-label">Agent Integration</span>
-        <h2 class="section-title">First-class support for agentic AI</h2>
-        <p class="section-sub">ClawPurse was built inside the OpenClaw ecosystem. Autonomous agents get wallet access with human-grade guardrails. Proof-of-work faucets, bounty payouts, 402 API calls, or automated restakes — all from the same local keystore.</p>
-
-        <div class="agent-highlight">
-          <div class="icon">🤖</div>
-          <div>
-            <h4>SKILL.md — Agent Integration Guide</h4>
-            <p>Complete documentation for OpenClaw agents, automation scripts, and AI assistants. Covers the wallet API, 402 gateway flow, security best practices, and integration patterns.</p>
-            <a href="https://github.com/mhue-ai/ClawPurse/blob/main/SKILL.md">View SKILL.md on GitHub →</a>
+        <div class="code-card">
+          <div class="code-card__header">
+            <span class="code-card__dot" style="background:#ff5f57;"></span>
+            <span class="code-card__dot" style="background:#febc2e;"></span>
+            <span class="code-card__dot" style="background:#28c840;"></span>
+            <span class="code-card__title">agent.ts</span>
           </div>
-        </div>
+<pre><span class="kw">async function</span> <span class="fn">paidFetch</span>(url: string) {
+  <span class="kw">let</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(url);
 
-        <div class="feat-grid">
-          <div class="feat-card">
-            <h4>Skill-ready</h4>
-            <p>The OpenClaw skill wraps the CLI for drop-in agent usage. Pipe receipts straight back to chat.</p>
-          </div>
-          <div class="feat-card">
-            <h4>Priority faucet lanes</h4>
-            <p>Timpi Drip gives OpenClaw-authenticated agents a higher throughput drip for faster onboarding.</p>
-          </div>
-          <div class="feat-card">
-            <h4>PoW over CAPTCHA</h4>
-            <p>Agent-friendly proof-of-work replaces CAPTCHA. ClawPurse ships the PoW solver that powers Timpi Drip.</p>
-          </div>
-          <div class="feat-card">
-            <h4>Autonomous 402 flow</h4>
-            <p>Agents detect 402 responses, parse invoices, pay on-chain, and retry with proof — all programmatically.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <span class="kw">if</span> (res.status === <span class="num">402</span>) {
+    <span class="kw">const</span> { payment } = <span class="kw">await</span> res.<span class="fn">json</span>();
 
-    <!-- QUICK START -->
-    <section id="quick-start">
-      <div class="container">
-        <span class="section-label">Quick Start</span>
-        <h2 class="section-title">Get running in under a minute</h2>
-        <div class="code-block">
-<pre><span class="comment"># Install the wallet</span>
-<span class="cmd">npm install && npm run build && npm link</span>
+    <span class="cm">// Pay with ClawPurse</span>
+    <span class="kw">const</span> { send, loadKeystore }
+      = <span class="kw">await</span> <span class="fn">import</span>(<span class="str">"clawpurse"</span>);
+    <span class="kw">const</span> { wallet, address }
+      = <span class="kw">await</span> <span class="fn">loadKeystore</span>(
+          process.env.CLAWPURSE_PASSWORD!
+        );
+    <span class="kw">await</span> <span class="fn">send</span>(
+      wallet, address,
+      payment.address, payment.amount,
+      { memo: payment.memo }
+    );
 
-<span class="comment"># Create a wallet</span>
-<span class="cmd">clawpurse init --password &lt;pass&gt;</span>
-<span class="cmd">clawpurse address</span>
-<span class="cmd">clawpurse balance --password &lt;pass&gt;</span>
-
-<span class="comment"># Send tokens</span>
-<span class="cmd">clawpurse send neutaro1... 1.25 --password &lt;pass&gt;</span>
-
-<span class="comment"># Staking (v2.0)</span>
-<span class="cmd">clawpurse validators</span>
-<span class="cmd">clawpurse stake neutarovaloper1... 100 --password &lt;pass&gt;</span>
-<span class="cmd">clawpurse delegations</span></pre>
+    <span class="cm">// Retry with proof</span>
+    res = <span class="kw">await</span> <span class="fn">fetch</span>(url, {
+      headers: {
+        <span class="str">"X-Payment-Proof"</span>: payment.invoiceId
+      }
+    });
+  }
+  <span class="kw">return</span> res.<span class="fn">json</span>();
+}</pre>
         </div>
       </div>
     </section>
 
-    <!-- ECOSYSTEM -->
-    <section id="timpi">
-      <div class="container">
-        <span class="section-label">Ecosystem</span>
-        <h2 class="section-title">Powered by Timpi & the Neutaro blockchain</h2>
-        <p class="section-sub">ClawPurse is the payment layer for Timpi's independent search network. Timpi combines privacy-first search, an open Data API, and DePIN nodes that reward operators for running the TAP network.</p>
+    <!-- ============ QUICK START ============ -->
+    <section class="section reveal" id="quick-start">
+      <span class="tag tag--mint">Quick Start</span>
+      <h2 class="section__title">Install and run the gateway in under a minute</h2>
+      <div class="code-card" style="max-width: 680px;">
+        <div class="code-card__header">
+          <span class="code-card__dot" style="background:#ff5f57;"></span>
+          <span class="code-card__dot" style="background:#febc2e;"></span>
+          <span class="code-card__dot" style="background:#28c840;"></span>
+          <span class="code-card__title">terminal</span>
+        </div>
+<pre><span class="cm"># Clone and install</span>
+git clone https://github.com/mhue-ai/clawpurse-gateway.git
+<span class="kw">cd</span> clawpurse-gateway && npm install
 
-        <div class="eco-grid">
-          <div class="eco-card">
-            <div class="label">Timpi stack</div>
-            <h4>Search, Data, DePIN</h4>
-            <ul>
-              <li>Search Engine: censorship-resistant results with no profiling or tracking.</li>
-              <li>Data API: programmatic access to the decentralized index.</li>
-              <li>DePIN nodes: Collectors, Guardians, and GeoCores that earn NTMPI.</li>
-            </ul>
-            <p style="margin-top:12px;">Join at <a href="https://timpi.io">timpi.io</a>.</p>
-          </div>
+<span class="cm"># Configure</span>
+cp .env.example .env
+<span class="cm"># Set GATEWAY_PAYMENT_ADDRESS and JWT_SECRET</span>
 
-          <div>
-            <div class="eco-card" style="margin-bottom:20px;">
-              <div class="label">Where to get NTMPI</div>
-              <h4>MEXC Spot Pair</h4>
-              <ol class="eco-steps">
-                <li>Sign in to MEXC and deposit USDT.</li>
-                <li>Open the NTMPI/USDT spot market.</li>
-                <li>Place an order, then withdraw to your Neutaro address.</li>
-              </ol>
-            </div>
-            <div class="eco-card">
-              <h4>Gravity Bridge → Osmosis</h4>
-              <ol class="eco-steps">
-                <li>Bridge stablecoins from Ethereum via Gravity Pulse.</li>
-                <li>IBC-hop to Osmosis via Keplr or Leap.</li>
-                <li>Swap for NTMPI and IBC to Neutaro.</li>
-              </ol>
-              <p style="margin-top:10px;">Full guide: <a href="https://github.com/mhue-ai/ClawPurse/blob/main/HOWTOGETTIMPI.md">HOWTOGETTIMPI.md</a></p>
-            </div>
-          </div>
+<span class="cm"># Start a test upstream</span>
+npm run test:upstream
+
+<span class="cm"># Start the gateway</span>
+npm run dev
+
+<span class="cm"># Test the 402 flow</span>
+curl <span class="str">http://localhost:4020/api/test</span>
+<span class="cm"># Pay, then retry with proof:</span>
+curl -H <span class="str">"X-Payment-Proof: &lt;invoiceId&gt;"</span> \
+     <span class="str">http://localhost:4020/api/test</span></pre>
+      </div>
+    </section>
+
+    <!-- ============ ARCHITECTURE ============ -->
+    <section class="section reveal" id="architecture">
+      <span class="tag tag--gold">Architecture</span>
+      <h2 class="section__title">TypeScript microservice architecture</h2>
+      <p class="section__desc">
+        A focused TypeScript codebase — gateway logic, four internal services, and middleware. 46 unit tests cover every layer.
+      </p>
+      <div class="arch-cards">
+        <div class="acard">
+          <div class="acard__name" style="color:var(--accent-402);">config.ts</div>
+          <div class="acard__desc">Env-driven gateway config</div>
+        </div>
+        <div class="acard">
+          <div class="acard__name" style="color:var(--accent-mint);">db.ts</div>
+          <div class="acard__desc">SQLite: invoices, prepaid, logs</div>
+        </div>
+        <div class="acard">
+          <div class="acard__name" style="color:var(--accent-gold);">invoice.ts</div>
+          <div class="acard__desc">Invoice creation & route pricing</div>
+        </div>
+        <div class="acard">
+          <div class="acard__name" style="color:var(--accent-402);">verify.ts</div>
+          <div class="acard__desc">On-chain payment verification</div>
+        </div>
+        <div class="acard">
+          <div class="acard__name" style="color:var(--accent-mint);">proxy.ts</div>
+          <div class="acard__desc">Reverse proxy to upstream</div>
+        </div>
+        <div class="acard">
+          <div class="acard__name" style="color:var(--accent-gold);">AuthService</div>
+          <div class="acard__desc">JWT auth for management API</div>
+        </div>
+        <div class="acard">
+          <div class="acard__name" style="color:var(--accent-402);">WalletService</div>
+          <div class="acard__desc">Internal wallet ledger</div>
+        </div>
+        <div class="acard">
+          <div class="acard__name" style="color:var(--accent-mint);">TxService</div>
+          <div class="acard__desc">Wallet-to-wallet transfers</div>
+        </div>
+        <div class="acard">
+          <div class="acard__name" style="color:var(--accent-gold);">BlockchainSvc</div>
+          <div class="acard__desc">Internal block chain</div>
         </div>
       </div>
     </section>
 
-    <!-- RELEASES -->
-    <section id="releases">
-      <div class="container">
-        <span class="section-label">Releases</span>
-        <h2 class="section-title">Version history</h2>
-        <div class="release-list">
-          <div class="release-item">
-            <h4>Wallet v2.0 — Staking</h4>
-            <p>Full staking CLI and API: stake, unstake, redelegate, delegations, validators. 22-day unbonding support and validator discovery.</p>
-          </div>
-          <div class="release-item">
-            <h4>Wallet v2.0.1 — Security</h4>
-            <p>Password strength enforcement, input validation, 60+ automated tests, CI/CD pipeline, and 6 new documentation guides.</p>
-          </div>
-          <div class="release-item">
-            <h4>Gateway v0.2.0</h4>
-            <p>HTTP 402 reverse proxy with invoice routing, prepaid balances, on-chain verification, JWT management API, and Docker deploy.</p>
-          </div>
-          <div class="release-item">
-            <h4>Timpi Drip Faucet</h4>
-            <p>Agent-friendly faucet with proof-of-work challenge. Higher throughput drip for OpenClaw-authenticated agents.</p>
-          </div>
+    <!-- ============ CONFIGURATION ============ -->
+    <section class="section reveal" id="configuration">
+      <span class="tag tag--402">Config</span>
+      <h2 class="section__title">Gateway configuration via environment variables</h2>
+      <p class="section__desc">All settings via env vars or <code style="font-size:0.9rem; background:var(--bg-elevated); padding:2px 6px; border-radius:4px;">.env</code> file.</p>
+      <div class="config-table-wrap">
+        <table>
+          <thead><tr><th>Variable</th><th>Default</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td>PORT</td><td>4020</td><td class="desc-cell">Gateway listen port</td></tr>
+            <tr><td>GATEWAY_UPSTREAM</td><td>http://localhost:3000</td><td class="desc-cell">Upstream API to proxy</td></tr>
+            <tr><td>GATEWAY_PAYMENT_ADDRESS</td><td>&mdash;</td><td class="desc-cell">Your Neutaro wallet address (required)</td></tr>
+            <tr><td>GATEWAY_DEFAULT_PRICE</td><td>0.001</td><td class="desc-cell">Default price per request in NTMPI</td></tr>
+            <tr><td>GATEWAY_ROUTES</td><td>&mdash;</td><td class="desc-cell">Route pricing overrides</td></tr>
+            <tr><td>GATEWAY_REST</td><td>https://api2.neutaro.io</td><td class="desc-cell">Neutaro REST API endpoint</td></tr>
+            <tr><td>GATEWAY_MIN_CONFIRMATIONS</td><td>1</td><td class="desc-cell">Block confirmations required</td></tr>
+            <tr><td>GATEWAY_INVOICE_TTL</td><td>300</td><td class="desc-cell">Invoice validity in seconds</td></tr>
+            <tr><td>GATEWAY_PREPAID</td><td>false</td><td class="desc-cell">Enable prepaid balance system</td></tr>
+            <tr><td>GATEWAY_DB</td><td>./gateway.db</td><td class="desc-cell">SQLite database path</td></tr>
+            <tr><td>JWT_SECRET</td><td>&mdash;</td><td class="desc-cell">Secret for management API JWT (required)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ ECOSYSTEM ============ -->
+    <section class="section reveal" id="ecosystem">
+      <span class="tag tag--mint">Ecosystem</span>
+      <h2 class="section__title">Part of the Timpi, Neutaro & ClawPurse ecosystem</h2>
+      <div class="eco-grid">
+        <div class="eco-card">
+          <h3>ClawPurse Wallet</h3>
+          <p>
+            The local NTMPI wallet with encrypted keystores, guardrails, staking, and destination allowlists. The reference client for paying through the gateway.
+          </p>
+          <p style="margin-top:12px;"><a href="https://github.com/mhue-ai/ClawPurse" target="_blank" rel="noopener">github.com/mhue-ai/ClawPurse &rarr;</a></p>
+        </div>
+        <div class="eco-card">
+          <h3>Neutaro Blockchain</h3>
+          <p>
+            The Cosmos SDK chain powering NTMPI. All gateway payments are verified directly against Neutaro's REST API — no oracles, no bridges.
+          </p>
+          <p style="margin-top:12px;"><a href="https://neutaro.com" target="_blank" rel="noopener">neutaro.com &rarr;</a></p>
+        </div>
+        <div class="eco-card">
+          <h3>Timpi Network</h3>
+          <p>
+            Privacy-first decentralised search with an open Data API and DePIN nodes. ClawPurse Gateway lets you monetise any Timpi-powered service via micropayments.
+          </p>
+          <p style="margin-top:12px;"><a href="https://timpi.io" target="_blank" rel="noopener">timpi.io &rarr;</a></p>
+        </div>
+        <div class="eco-card">
+          <h3>Timpi Drip Faucet</h3>
+          <p>
+            Agent-friendly NTMPI faucet with proof-of-work challenge instead of CAPTCHA. OpenClaw-authenticated agents get a higher throughput drip for faster onboarding.
+          </p>
+          <p style="margin-top:12px;"><a href="https://drip.clawpurse.ai" target="_blank" rel="noopener">drip.clawpurse.ai &rarr;</a></p>
         </div>
       </div>
     </section>
 
-    <!-- DONATE -->
-    <div class="donate-box">
-      <h3>Buy Mhue a Timpi coffee ☕</h3>
-      <p>If the ecosystem is saving your stack ops time, tip the builders.</p>
-      <div class="donate-addr">neutaro1e8xal8tqdegu4w48z3fphemd3hc07gech3pfek</div>
-      <p class="donate-memo">Memo optional — just let us know what you shipped!</p>
-    </div>
+    <!-- ============ FAQ ============ -->
+    <section class="section reveal" id="faq">
+      <span class="tag tag--gold">FAQ</span>
+      <h2 class="section__title">Frequently asked questions</h2>
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 760px;">
+        <div class="fcard">
+          <h3>What is ClawPurse Gateway?</h3>
+          <p>An open-source HTTP reverse proxy that implements the <strong>402 Payment Required</strong> status code to gate any API behind NTMPI micropayments on the Neutaro blockchain. It supports pay-per-request and prepaid balance flows for AI agents, automation scripts, and machine-to-machine commerce.</p>
+        </div>
+        <div class="fcard">
+          <h3>How does the HTTP 402 payment flow work?</h3>
+          <p>A client requests a gated endpoint and receives a 402 response with an invoice containing an invoiceId, amount, address, and memo. The client pays on-chain using ClawPurse or any Neutaro wallet, then retries the request with an <code style="font-size:0.82rem; background:var(--bg-elevated); padding:2px 6px; border-radius:4px;">X-Payment-Proof</code> header. The gateway verifies the transaction on Neutaro and proxies the request upstream.</p>
+        </div>
+        <div class="fcard">
+          <h3>What is NTMPI and how do I get it?</h3>
+          <p>NTMPI is the native token of the Neutaro blockchain, part of the <a href="https://timpi.io" target="_blank" rel="noopener" style="color:var(--accent-mint); text-decoration:none;">Timpi</a> decentralised search network. You can get free NTMPI from the <a href="https://drip.clawpurse.ai" target="_blank" rel="noopener" style="color:var(--accent-mint); text-decoration:none;">Timpi Drip Faucet</a>, acquire it on <a href="https://www.mexc.com/exchange/NTMPI_USDT" target="_blank" rel="noopener" style="color:var(--accent-mint); text-decoration:none;">MEXC</a> via the NTMPI/USDT spot pair, or bridge through Gravity Bridge to Osmosis and swap using Keplr or Leap wallet.</p>
+        </div>
+        <div class="fcard">
+          <h3>Can AI agents use ClawPurse Gateway autonomously?</h3>
+          <p>Yes. The gateway is designed for agentic AI and machine-to-machine workloads. Agents can programmatically parse the 402 invoice, pay on-chain via the <a href="https://github.com/mhue-ai/ClawPurse" target="_blank" rel="noopener" style="color:var(--accent-mint); text-decoration:none;">ClawPurse wallet API</a>, and retry with the payment proof header — all without human intervention.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DONATE ============ -->
+    <section class="section reveal">
+      <div class="donate">
+        <p style="font-weight:600; font-size:1.1rem; color:var(--accent-mint); margin-bottom:4px;">
+          Buy Mhue a Timpi coffee ☕
+        </p>
+        <p style="color:var(--text-2); font-size:0.92rem;">
+          If the gateway is saving your stack ops time, tip the builders.
+        </p>
+        <code class="donate__addr">neutaro1e8xal8tqdegu4w48z3fphemd3hc07gech3pfek</code>
+        <p style="margin-top:14px; font-size:0.85rem; color:var(--text-3);">Memo optional — just let us know what you shipped!</p>
+      </div>
+    </section>
 
   </main>
 
+  <!-- ============ FOOTER ============ -->
   <footer>
-    <div class="footer-inner">
-      <nav class="footer-nav" aria-label="Footer navigation">
-        <a href="#how-it-works">How It Works</a>
-        <a href="#wallet-features">Wallet</a>
-        <a href="#gateway-features">Gateway</a>
-        <a href="#agents">Agents</a>
+    <nav aria-label="Page sections" style="margin-bottom:20px;">
+      <div class="footer-links">
+        <a href="#payment-flows">Payment Flows</a>
+        <a href="#features">Features</a>
+        <a href="#api">API Reference</a>
+        <a href="#integration">Integration</a>
         <a href="#quick-start">Quick Start</a>
-        <a href="#timpi">Ecosystem</a>
-        <a href="#releases">Releases</a>
-      </nav>
-      <nav class="footer-nav" aria-label="External links">
-        <a href="https://github.com/mhue-ai/ClawPurse">Wallet Repo</a>
-        <a href="https://github.com/mhue-ai/clawpurse-gateway">Gateway Repo</a>
-        <a href="https://gateway.clawpurse.ai">Gateway Site</a>
-        <a href="https://drip.clawpurse.ai">Timpi Drip</a>
-        <a href="https://neutaro.com">Neutaro</a>
-        <a href="https://timpi.io">Timpi</a>
-        <a href="https://explorer.neutaro.io">Explorer</a>
-      </nav>
-      <div class="footer-meta">
-        <span>Maintained by the Mhue family</span>
-        <span>ClawPurse Micropayment Ecosystem</span>
-        <span>MIT License</span>
+        <a href="#configuration">Configuration</a>
+        <a href="#faq">FAQ</a>
       </div>
-    </div>
+    </nav>
+    <nav aria-label="External links">
+      <div class="footer-links">
+        <a href="https://github.com/mhue-ai/clawpurse-gateway" target="_blank" rel="noopener">Gateway Repo</a>
+        <a href="https://github.com/mhue-ai/ClawPurse" target="_blank" rel="noopener">Wallet Repo</a>
+        <a href="https://drip.clawpurse.ai" target="_blank" rel="noopener">Timpi Drip</a>
+        <a href="https://neutaro.com" target="_blank" rel="noopener">Neutaro</a>
+        <a href="https://timpi.io" target="_blank" rel="noopener">Timpi</a>
+        <a href="https://explorer.neutaro.io" target="_blank" rel="noopener">Explorer</a>
+      </div>
+    </nav>
+    <p>Maintained by the Mhue family &bull; ClawPurse Gateway v0.2.0 &bull; MIT License</p>
   </footer>
+
+  <script>
+    // Intersection Observer for scroll reveals
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
 </body>
 </html>
